@@ -1,0 +1,19 @@
+<div class="showcase" data-next-url="<%= page.next ? page.next_link : '' %>">
+  <% page.posts.each(work => { %>
+    <div class="showcase__item">
+      <figure class="card">
+        <a href="/<%= work.path %>" class="card__image">
+          <img src="<%= work.coverImage %>">
+        </a>
+        <figcaption class="card__caption">
+          <h6 class="card__title">
+            <a href="/<%= work.path %>"><%= work.title %></a>
+          </h6>
+          <div class="card__description">
+            <p><%= work.contentExcerpt %></p>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  <% }) %>
+</div>

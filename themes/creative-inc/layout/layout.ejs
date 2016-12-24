@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="<%= site.data.settings.language %>">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <% if (env.env === 'production') { %>
+      <link rel="stylesheet" href="/assets/all.css">
+    <% } %>
+    <% site.data.settings.faviconMetaTags.forEach(tag => { %>
+      <%- tagGenerator(tag) -%>
+    <% }) %>
+    <% seoMetaTags = page.seoMetaTags || site.data.settings.seoMetaTags %>
+    <% seoMetaTags.forEach(tag => { %>
+      <%- tagGenerator(tag) -%>
+    <% }) %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container__sidebar">
+        <div class="sidebar">
+          <h6 class="sidebar__title">
+            <a href="/"><%= site.data.settings.name %></a>
+          </h6>
+
+          <div class="sidebar__intro">
+            <%- markdown(site.data.settings.intro) %>
+          </div>
+
+          <ul class="sidebar__menu">
+            <li class="<%= path === 'index.html' ? 'is-active' : '' %>">
+              <a href="/">Home</a>
+            </li>
+            <li class="<%= path === 'about/index.html' ? 'is-active' : '' %>">
+              <a href="/about">About</a>
+            </li>
+          </ul>
+
+          <p class="sidebar__social">
+            <% site.data.settings.socialProfiles.forEach(profile => { %>
+              <a href="<%= profile.url %>" class="social social--<%= profile.type %>"></a>
+            <% }) %>
+          </p>
+
+          <div class="sidebar__copyright">
+            <%= site.data.settings.copyright %>
+          </div>
+        </div>
+      </div>
+      <div class="container__body">
+        <div class="container__mobile-header">
+          <div class="mobile-header">
+            <div class="mobile-header__menu">
+              <a href="#" data-js="toggleSidebar"></a>
+            </div>
+            <div class="mobile-header__logo">
+              <a href="/index.html">
+                <%= site.data.settings.name %>
+              </a>
+            </div>
+          </div>
+        </div>
+        <%- body %>
+      </div>
+    </div>
+    <script src="/assets/all.js"></script>
+    <% if (env.env === 'development') { %>
+      <script src="http://localhost:5678/livereload.js"></script>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+theme: creative-inc
+permalink: works/:title/
+
+index_generator:
+  per_page: 5
+  order_by: position

@@ -1,0 +1,27 @@
+<article class="sheet">
+  <div class="sheet__inner">
+    <h1 class="sheet__title"><%= page.title %></h1>
+    <p class="sheet__lead"><%= page.excerpt %></p>
+    <div class="sheet__slider">
+      <div class="slider js_slider">
+        <div class="slider__frame js_frame">
+          <ul class="slider__slides js_slides">
+            <% page.extraImages.forEach(image => { %>
+              <li class="slider__slide js_slide">
+                <img src="<%= image %>">
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+        <span class="slider__prev js_prev"></span>
+        <span class="slider__next js_next"></span>
+      </div>
+    </div>
+    <div class="sheet__body">
+      <%- page.content %>
+    </div>
+    <div class="sheet__gallery">
+      <img src="<%= page.detailImage %>" />
+    </div>
+  </div>
+</article>
